@@ -15,7 +15,7 @@ function ManageBookings() {
   const fetchBookings = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/bookings",
+`${import.meta.env.VITE_API_URL}/bookings`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -59,7 +59,7 @@ function ManageBookings() {
   const updateStatus = async (id, newStatus) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/bookings/${id}/status`,
+`${import.meta.env.VITE_API_URL}/bookings/${id}/status`,
         {
           status: newStatus,
         },

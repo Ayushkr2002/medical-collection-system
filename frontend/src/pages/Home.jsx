@@ -303,9 +303,6 @@ text-transparent
 <HowItWorks/>
 <About/>
 
-{/* <Testimonials/> */}
-
-{/* <Services/> */}
 
 <Footer/>
 

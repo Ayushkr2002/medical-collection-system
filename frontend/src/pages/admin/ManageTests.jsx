@@ -28,7 +28,7 @@ function ManageTests() {
   const fetchTests = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/tests"
+`${import.meta.env.VITE_API_URL}/tests`
       );
 
       setTests(res.data);
@@ -74,7 +74,7 @@ function ManageTests() {
     try {
       if (editingId) {
         await axios.put(
-          `http://localhost:5000/api/tests/${editingId}`,
+          `${import.meta.env.VITE_API_URL}/tests/${editingId}`,
           payload,
           {
             headers: {
@@ -86,7 +86,7 @@ function ManageTests() {
         toast.success("Test Updated");
       } else {
         await axios.post(
-          "http://localhost:5000/api/tests",
+          `${import.meta.env.VITE_API_URL}/tests`,
           payload,
           {
             headers: {
@@ -133,7 +133,7 @@ function ManageTests() {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/tests/${id}`,
+        `${import.meta.env.VITE_API_URL}/tests/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

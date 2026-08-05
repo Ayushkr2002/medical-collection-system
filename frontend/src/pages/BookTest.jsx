@@ -9,8 +9,7 @@ import {
   pageVariants,
   fadeUp,
   staggerContainer,
-  cardHover,
-  buttonHover,
+  
 } from "../animations";
 
 function BookTest() {
@@ -39,8 +38,7 @@ const handleChange = (e) => {
 
     const token = localStorage.getItem("token");
 
-const res = await axios.post(
-  "http://localhost:5000/api/bookings",
+const res = await axios.post(`${import.meta.env.VITE_API_URL}/bookings`,
   formData,
   {
     headers: {
@@ -79,7 +77,7 @@ const res = await axios.post(
     variants={pageVariants}
     initial="hidden"
     animate="visible"
-    className="relative min-h-screen py-20 px-6 overflow-hidden bg-gradient-to-br from-violet-50 via-white to-fuchsia-50"
+    className="relative min-h-screen py-20 px-6 overflow-hidden bg-linear-to-br from-violet-50 via-white to-fuchsia-50"
 >
         <div className="absolute top-0 left-0 w-96 h-96 bg-violet-300/20 rounded-full blur-3xl"></div>
 
@@ -295,7 +293,7 @@ transition={{duration:.2}}
   disabled={loading}
   className="
 w-full
-bg-gradient-to-r
+bg-linear-to-r
 from-violet-600
 to-fuchsia-600
 text-white

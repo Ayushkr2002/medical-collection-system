@@ -21,7 +21,7 @@ function Dashboard() {
         const token = localStorage.getItem("token");
 
         const res = await axios.get(
-          "http://localhost:5000/api/bookings/my-bookings",
+`${import.meta.env.VITE_API_URL}/bookings/my-bookings`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -51,7 +51,7 @@ function Dashboard() {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(`http://localhost:5000/api/bookings/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/bookings/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

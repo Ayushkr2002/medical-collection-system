@@ -11,7 +11,8 @@ function ManageReports() {
 
   const fetchReports = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/bookings", {
+      const res = await axios.get(
+`${import.meta.env.VITE_API_URL}/bookings`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -45,7 +46,7 @@ function ManageReports() {
        
     try {
       await axios.put(
-        `http://localhost:5000/api/reports/${id}/report`,
+        `${import.meta.env.VITE_API_URL}/reports/${id}/report`,
         formData,
         {
           headers: {
@@ -54,7 +55,7 @@ function ManageReports() {
           },
         },
       );
-      console.log(`http://localhost:5000/api/reports/${id}/report`);   
+      console.log(`${import.meta.env.VITE_API_URL}/reports/${id}/report`);
 
       toast.success("Report Uploaded");
 

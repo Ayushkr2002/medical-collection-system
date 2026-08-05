@@ -1,148 +1,146 @@
 const Test = require("../models/Test");
 
-const createTest = async(req,res)=>{
+// CREATE TEST
+const createTest = async (req, res) => {
+  try {
+    const {
+      name,
+      price,
+      category,
+      description,
+      includedTests,
+      reportTime,
+      offer,
+      popular,
+    } = req.body;
 
-try{
+    const exists = await Test.findOne({ name });
 
-const test =
-await Test.create(req.body);
+    if (exists) {
+      return res.status(400).json({
+        message: "Test already exists",
+      });
+    }
 
-res.status(201).json(test);
+    const test = await Test.create({
+      name,
+      price,
+      category,
+      description,
+      includedTests,
+      reportTime,
+      offer,
+      popular,
+    });
 
-}
-catch(error){
-
-res.status(500).json({
-message:error.message
-});
-
-}
-
+    res.status(201).json(test);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
-const getTests = async(req,res)=>{
+// GET ALL TESTS
+const getTests = async (req, res) => {
+  try {
+    const filter = {};
 
-try{
+    if (req.query.category) {
+      filter.category = req.query.category;
+    }
 
-const filter={};
+    if (req.query.search) {
+      filter.name = {
+        $regex: req.query.search,
+        $options: "i",
+      };
+    }
 
-if(req.query.category){
+    const tests = await Test.find(filter).sort({
+      createdAt: -1,
+    });
 
-filter.category=
-req.query.category;
-
-}
-
-const tests=
-await Test.find(filter);
-
-res.status(200)
-.json(tests);
-
-}
-catch(error){
-
-res.status(500).json({
-message:error.message
-});
-
-}
-
+    res.status(200).json(tests);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
-const getSingleTest = async(req,res)=>{
+// GET SINGLE TEST
+const getSingleTest = async (req, res) => {
+  try {
+    const test = await Test.findById(req.params.id);
 
-try{
+    if (!test) {
+      return res.status(404).json({
+        message: "Test not found",
+      });
+    }
 
-const test =
-await Test.findById(
-req.params.id
-);
-
-if(!test){
-
-return res.status(404).json({
-message:"Test not found"
-});
-
-}
-
-res.status(200).json(test);
-
-}
-catch(error){
-
-res.status(500).json({
-message:error.message
-});
-
-}
-
+    res.status(200).json(test);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
-const updateTest = async(req,res)=>{
+// UPDATE TEST
+const updateTest = async (req, res) => {
+  try {
+    const test = await Test.findById(req.params.id);
 
-try{
+    if (!test) {
+      return res.status(404).json({
+        message: "Test not found",
+      });
+    }
 
-const updated =
-await Test.findByIdAndUpdate(
+    Object.assign(test, req.body);
 
-req.params.id,
+    await test.save();
 
-req.body,
-
-{
-new:true
-}
-
-);
-
-res.status(200).json(updated);
-
-}
-catch(error){
-
-res.status(500).json({
-message:error.message
-});
-
-}
-
+    res.status(200).json({
+      message: "Test updated successfully",
+      test,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
-const deleteTest = async(req,res)=>{
+// DELETE TEST
+const deleteTest = async (req, res) => {
+  try {
+    const test = await Test.findById(req.params.id);
 
-try{
+    if (!test) {
+      return res.status(404).json({
+        message: "Test not found",
+      });
+    }
 
-await Test.findByIdAndDelete(
-req.params.id
-);
+    await test.deleteOne();
 
-res.status(200).json({
-message:"Deleted Successfully"
-});
-
-}
-catch(error){
-
-res.status(500).json({
-message:error.message
-});
-
-}
-
+    res.status(200).json({
+      message: "Test deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
-exports.createTest =
-createTest;
-
-exports.getTests =
-getTests;
-
-exports.getSingleTest =
-getSingleTest;
-
-exports.updateTest =
-updateTest;
-exports.deleteTest =
-deleteTest;
+module.exports = {
+  createTest,
+  getTests,
+  getSingleTest,
+  updateTest,
+  deleteTest,
+};

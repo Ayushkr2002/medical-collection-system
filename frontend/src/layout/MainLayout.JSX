@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 
-function MainLayout({ children }) {
+function mainLayout({ children }) {
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#d7d9e1]">
       <Navbar />
@@ -9,4 +9,4 @@ function MainLayout({ children }) {
   );
 }
 
-export default MainLayout;
+export default mainLayout;

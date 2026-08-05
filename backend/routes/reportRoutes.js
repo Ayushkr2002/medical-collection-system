@@ -22,11 +22,11 @@ router.put(
   upload.single("report"),
   uploadReport
 );
-router.put("/:id/report", (req, res) => {
-  console.log("PUT ROUTE HITt");
-  res.json({
-    message: "PUT route working",
-  });
-});
+// router.put("/:id/report", (req, res) => {
+//   console.log("PUT ROUTE HITt");
+//   res.json({
+//     message: "PUT route working",
+//   });
+// });
 
 module.exports = router;

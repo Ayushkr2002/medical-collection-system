@@ -44,9 +44,9 @@ function Login() {
     try {
       setLoading(true);
 
-      const endpoint = isLogin
-        ? "http://localhost:5000/api/auth/login"
-        : "http://localhost:5000/api/auth/register";
+const endpoint = isLogin
+? `${import.meta.env.VITE_API_URL}/auth/login`
+: `${import.meta.env.VITE_API_URL}/auth/register`;
 
       const payload = isLogin
         ? {
