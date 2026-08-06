@@ -12,7 +12,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://medical-collection-system-c714-2nkk6b6f2-ayushkr2002s-projects.vercel.app",
+      "https://medical-collection-system-jrja.vercel.app",
     ],
     credentials: true,
   })
