@@ -8,7 +8,15 @@ const testRoutes = require("./routes/testRoutes");
 const app = express();
 const reportRoutes =require("./routes/reportRoutes");
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://medical-collection-system-c714-2nkk6b6f2-ayushkr2002s-projects.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
