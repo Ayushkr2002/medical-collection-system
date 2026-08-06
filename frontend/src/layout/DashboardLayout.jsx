@@ -14,7 +14,7 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 
-import { logout} from "../utils/Auth";
+import { logout} from "../utils/auth";
 
 function DashboardLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
