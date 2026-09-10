@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ManageTests from "./pages/admin/ManageTests";
 import ManageBookings from "./pages/admin/ManageBookings";
 import ManageReports from "./pages/admin/ManageReports";
+import GoogleSuccess from "./pages/GoogleSuccess";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/" element={<Home />} />
 
                 <Route path="/login" element={<Login />} />
+                <Route path="/google-success" element={<GoogleSuccess />} />
 
                 <Route path="/services" element={<Services />} />
 

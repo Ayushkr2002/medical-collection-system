@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import {
   pageVariants,
   fadeUp,
-  staggerContainer,
+  
   cardHover,
   buttonHover,
 } from "../animations";
@@ -52,6 +52,7 @@ console.log("Data:", res.data);
     );
   }
 
+
   const filteredTests = tests.filter((item) => {
   const matchCategory =
     category === "All" ||
@@ -62,13 +63,13 @@ console.log("Data:", res.data);
 
   return matchCategory && matchSearch;
 });
-
+console.log("Filtered:", filteredTests);
   return (
   <motion.div
     variants={pageVariants}
     initial="hidden"
     animate="visible"
-    className="min-h-screen bg-gradient-to-br from-[#F6F4FB] via-[#F4F2FD] to-[#FBEAF5]"
+    className="min-h-screen bg-linear-to-br from-[#F6F4FB] via-[#F4F2FD] to-[#FBEAF5]"
   >
     {/* Hero */}
 
@@ -78,7 +79,7 @@ console.log("Data:", res.data);
       animate="visible"
       className="text-center py-20 px-6"
     >
-      <h1 className="text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-violet-700 to-fuchsia-600 bg-clip-text text-transparent">
+      <h1 className="text-5xl lg:text-6xl font-extrabold bg-linear-to-r from-violet-700 to-fuchsia-600 bg-clip-text text-transparent">
         Medical Test Packages
       </h1>
 
@@ -126,11 +127,9 @@ console.log("Data:", res.data);
 
     {/* Cards */}
 
-    <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+    <div
+      
+      
       className="max-w-7xl mx-auto px-6 pb-20 grid md:grid-cols-2 lg:grid-cols-3 gap-8"
     >
       {filteredTests.length === 0 ? (
@@ -210,8 +209,8 @@ console.log("Data:", res.data);
               whileTap={buttonHover.whileTap}
             >
               <Link
-                to="/book-test"
-                className="block mt-8 bg-gradient-to-r from-violet-600 to-pink-500 text-center text-white py-3 rounded-xl font-semibold shadow-lg"
+                to="/book"
+                className="block mt-8 bg-linear-to-r from-violet-600 to-pink-500 text-center text-white py-3 rounded-xl font-semibold shadow-lg"
               >
                 Book Now
               </Link>
@@ -220,7 +219,7 @@ console.log("Data:", res.data);
           </motion.div>
         ))
       )}
-    </motion.div>
+    </div>
 
   </motion.div>
 );

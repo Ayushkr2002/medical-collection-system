@@ -296,22 +296,27 @@ focus:shadow-xl
           </AnimatePresence>
 
           {/* Divider */}
-          {/* <div className="flex items-center gap-4 my-6">
+          <div className="flex items-center gap-4 my-6">
             <div className="flex-1 h-px bg-gray-200"></div>
 
             <p className="text-gray-400 text-sm">OR</p>
 
             <div className="flex-1 h-px bg-gray-200"></div>
-          </div> */}
+          </div> 
 
-          {/* Google */}
-          {/* <button className="w-full border border-gray-200 py-4 rounded-2xl flex items-center justify-center gap-3 hover:bg-gray-50 transition">
-            <FcGoogle size={24} />
-
-            <span className="font-medium text-gray-700">
-              Continue with Google
-            </span>
-          </button> */}
+         {/* Google */}
+<button
+  type="button"
+  onClick={() => {
+    window.location.href = `${import.meta.env.VITE_API_URL}/auth/google`;
+  }}
+  className="w-full border border-gray-200 py-4 rounded-2xl flex items-center justify-center gap-3 hover:bg-gray-50 transition"
+>
+  <FcGoogle size={24} />
+  <span className="font-medium text-gray-700">
+    Continue with Google
+  </span>
+</button>
 
           {/* <button
             type="button"
