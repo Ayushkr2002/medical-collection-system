@@ -2,6 +2,7 @@ import HowItWorks from "../components/HowItWorks";
 import Footer from "../components/Footer";
 import About from "./About";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 import heroimg from "../../public/home.jpg";
 
@@ -18,7 +19,7 @@ import {
 } from "../animations";
 
 function Home() {
-
+const navigate = useNavigate();
 return (
 
 <motion.div
@@ -95,6 +96,7 @@ variants={fadeLeft}
 <motion.button
 whileHover={buttonHover.whileHover}
 whileTap={buttonHover.whileTap}
+onClick={() => navigate("/book")}
 className="
 bg-linear-to-r
 from-indigo-600

@@ -44,9 +44,9 @@ function Login() {
     try {
       setLoading(true);
 
-const endpoint = isLogin
-? `${import.meta.env.VITE_API_URL}/auth/login`
-: `${import.meta.env.VITE_API_URL}/auth/register`;
+      const endpoint = isLogin
+        ? `${import.meta.env.VITE_API_URL}/auth/login`
+        : `${import.meta.env.VITE_API_URL}/auth/register`;
 
       const payload = isLogin
         ? {
@@ -237,21 +237,8 @@ focus:shadow-xl
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Password"
-                  className="
-w-full
-p-4
-rounded-2xl
-border
-border-gray-200
-focus:outline-none
-focus:ring-2
-focus:ring-violet-400
-transition-all
-duration-300
-hover:shadow-lg
-focus:shadow-xl
-"
-                />
+                  className="w-full p-4 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-violet-400
+                   transition-all duration-300 hover:shadow-lg focus:shadow-xl " />
 
                 <button
                   type="button"
@@ -261,22 +248,6 @@ focus:shadow-xl
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
               </div>
-
-              {/* {isLogin && (
-                <div className="flex items-center justify-between">
-                  <label className="flex items-center gap-2 text-sm text-gray-600">
-                    <input type="checkbox" />
-                    Remember Me
-                  </label>
-
-                  <button
-                    type="button"
-                    className="text-sm text-violet-600 hover:underline"
-                  >
-                    Forgot Password?
-                  </button>
-                </div>
-              )} */}
 
               {!isLogin && (
                 <label className="flex items-center gap-2 text-sm text-gray-600">
@@ -302,37 +273,21 @@ focus:shadow-xl
             <p className="text-gray-400 text-sm">OR</p>
 
             <div className="flex-1 h-px bg-gray-200"></div>
-          </div> 
+          </div>
 
-         {/* Google */}
-<button
-  type="button"
-  onClick={() => {
-    window.location.href = `${import.meta.env.VITE_API_URL}/auth/google`;
-  }}
-  className="w-full border border-gray-200 py-4 rounded-2xl flex items-center justify-center gap-3 hover:bg-gray-50 transition"
->
-  <FcGoogle size={24} />
-  <span className="font-medium text-gray-700">
-    Continue with Google
-  </span>
-</button>
-
-          {/* <button
+          {/* Google */}
+          <button
             type="button"
             onClick={() => {
-              setIsAdminLogin(!isAdminLogin);
-              setIsLogin(true); // Always login mode
-              setFormData({
-                name: "",
-                email: "",
-                password: "",
-              });
+              window.location.href = `${import.meta.env.VITE_API_URL}/auth/google`;
             }}
-            className="w-full mt-4 border border-violet-300 text-violet-700 py-3 rounded-2xl hover:bg-violet-50 transition"
+            className="w-full border border-gray-200 py-4 rounded-2xl flex items-center justify-center gap-3 hover:bg-gray-50 transition"
           >
-            {isAdminLogin ? "Login as Patient" : "Login as Administrator"}
-          </button> */}
+            <FcGoogle size={24} />
+            <span className="font-medium text-gray-700">
+              Continue with Google
+            </span>
+          </button>
 
           {/* Toggle */}
           <div className="text-center mt-8">
