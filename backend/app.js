@@ -13,7 +13,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      /^https:\/\/medical-collection-system.*\.vercel\.app$/,
+      "https://diagnova-ivory.vercel.app",
     ],
     credentials: true,
   })
